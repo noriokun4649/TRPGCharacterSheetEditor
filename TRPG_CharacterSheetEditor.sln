@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRPG_CharacterSheetEditor", "TRPG_CharacterSheetEditor\TRPG_CharacterSheetEditor.csproj", "{EFA19C57-D53A-4B59-94E7-5CC0A468D64A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA19C57-D53A-4B59-94E7-5CC0A468D64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA19C57-D53A-4B59-94E7-5CC0A468D64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA19C57-D53A-4B59-94E7-5CC0A468D64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA19C57-D53A-4B59-94E7-5CC0A468D64A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94F9622A-D78B-405D-A607-60F3B4F2A549}
+	EndGlobalSection
+EndGlobal
