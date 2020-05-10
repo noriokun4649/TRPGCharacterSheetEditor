@@ -321,17 +321,62 @@ namespace TRPG_PointCalculation
                 var ints = int.Parse(((string[])ability_list.Items[6])[3]);
                 var edu = int.Parse(((string[])ability_list.Items[7])[3]);
 
+
+
                 var oldRule = new int[] { pow * 5, pow * 5, ints * 5, edu * 5, (con + siz) / 2, pow * 1, edu * 20, ints * 10, str + siz };
 
                 for (int i = 0; i < point_list.Items.Count; i++)
                 {
                     var item = (string[])point_list.Items[i];
-                    point_list.Items[i] = new string[] { item[0], item[1], oldRule[i].ToString() };
+
+                    var output = oldRule[i].ToString();
+                    if (item[0].Equals("ダメージボーナス"))
+                    {
+                        output = GetDamageBonus(oldRule[i]);
+                    }
+
+                    point_list.Items[i] = new string[] { item[0], item[1], output };
                 }
             }
             catch
             {
 
+            }
+        }
+
+        private string GetDamageBonus(int num)
+        {
+            if (num <= 12)
+            {
+                return "-1D6";
+            }
+            else if (num <= 16)
+            {
+                return "-1D4";
+            }
+            else if (num <= 24)
+            {
+                return "±0";
+            }
+            else if (num <= 32)
+            {
+                return "+1D4";
+            }
+            else if (num <= 40)
+            {
+                return "+1D6";
+            }
+            else if (num <= 56)
+            {
+                return "+2D6";
+            }
+            else if (num <= 72)
+            {
+                return "+3D6";
+            }
+            else
+            {
+                return "";
             }
         }
 
