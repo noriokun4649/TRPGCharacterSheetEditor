@@ -235,6 +235,51 @@ namespace TRPG_PointCalculation
             return new bool[] { tec_cont, hoby_cont };
         }
 
+        private void Tec_edit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (tecpoint > 0)
+                {
+                    var window = new Add();
+                    window.EditData(((string[])tec_list.SelectedItem)[0], int.Parse(((string[])tec_list.SelectedItem)[1]), "職業", hobypoint_nokori, this, ((string[])tec_list.SelectedItem)[2]);
+                    window.Owner = this;
+                    window.Show();
+                    tec_list.Items.Remove(tec_list.SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("初期ポイントを設定して！");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("編集する技能を上の一覧から選択して！");
+            }
+        }
+
+        private void Hoby_edit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (hobypoint > 0)
+                {
+                    var window = new Add();
+                    window.EditData(((string[])hoby_list.SelectedItem)[0], int.Parse(((string[])hoby_list.SelectedItem)[1]), "趣味", hobypoint_nokori, this, ((string[])hoby_list.SelectedItem)[2]);
+                    window.Owner = this;
+                    window.Show();
+                    hoby_list.Items.Remove(hoby_list.SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("初期ポイントを設定して！");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("編集する技能を上の一覧から選択して！");
+            }
+        }
         //----------技能追加じっそー終わり----------
 
         //----------メニューじっそー----------
@@ -325,7 +370,7 @@ namespace TRPG_PointCalculation
 
 
 
-                var oldRule = new int[] { pow * 5, pow * 5, ints * 5, edu * 5, (con + siz) / 2, pow * 1, edu * 20, ints * 10,dex * 2, str + siz };
+                var oldRule = new int[] { pow * 5, pow * 5, ints * 5, edu * 5, (con + siz) / 2, pow * 1, edu * 20, ints * 10, dex * 2, str + siz };
 
                 for (int i = 0; i < point_list.Items.Count; i++)
                 {
@@ -524,5 +569,6 @@ namespace TRPG_PointCalculation
                 return;
             }
         }
+
     }
 }
