@@ -349,6 +349,7 @@ namespace TRPG_PointCalculation
             {
                 output_text += list[0] + "　　初期値：" + list[1] + "　＋　" + list[2] + "　＝　" + list[3] + "\n";
             }
+            output_text += "\n【探索者のデータ】\n\n【探索者の履歴】\n\n【収入と財産】\n\n【読んだクトゥルフ神話の魔導書】\n\n【アーティファクト／学んだ呪文】\n\n【遭遇した超自然の存在】";
             return output_text;
         }
 
