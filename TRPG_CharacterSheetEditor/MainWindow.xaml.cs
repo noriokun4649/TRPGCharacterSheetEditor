@@ -565,7 +565,6 @@ namespace TRPG_PointCalculation
             if (MessageBoxResult.Yes != MessageBox.Show("終了するとすべてのデータは消えます。\n\n終了してよろしいですか？", "終了しますか？", MessageBoxButton.YesNo, MessageBoxImage.Information))
             {
                 e.Cancel = true;
-                this.Close();
                 return;
             }
         }
