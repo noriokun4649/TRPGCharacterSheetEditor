@@ -97,6 +97,7 @@ namespace TRPG_PointCalculation
             point_list.Items.Add(new string[] { "マジックポイント", "POW×1", "" });
             point_list.Items.Add(new string[] { "職業技能ポイント", "EDU×20", "" });
             point_list.Items.Add(new string[] { "趣味技能ポイント", "INT×10", "" });
+            point_list.Items.Add(new string[] { "回避", "DEX×2", "" });
             point_list.Items.Add(new string[] { "ダメージボーナス", "STR+SIZ", "" });
         }
 
@@ -296,12 +297,12 @@ namespace TRPG_PointCalculation
             var output_text = "《職業技能》\t" + tecpoint + "\n";
             foreach (string[] list in tec_list.Items)
             {
-                output_text += list[0] + "\t初期値：" + list[1] + "\t(" + list[2] + ")\t" + list[3] + "\n";
+                output_text += list[0] + "　　初期値：" + list[1] + "　＋　" + list[2] + "　＝　" + list[3] + "\n";
             }
-            output_text = output_text + "\n《趣味技能》\t" + hobypoint + "\n";
+            output_text = output_text + "\n《趣味技能》　" + hobypoint + "\n";
             foreach (string[] list in hoby_list.Items)
             {
-                output_text += list[0] + "\t初期値：" + list[1] + "\t(" + list[2] + ")\t" + list[3] + "\n";
+                output_text += list[0] + "　　初期値：" + list[1] + "　＋　" + list[2] + "　＝　" + list[3] + "\n";
             }
             return output_text;
         }
@@ -317,13 +318,14 @@ namespace TRPG_PointCalculation
                 var str = int.Parse(((string[])ability_list.Items[0])[3]);
                 var con = int.Parse(((string[])ability_list.Items[1])[3]);
                 var pow = int.Parse(((string[])ability_list.Items[2])[3]);
+                var dex = int.Parse(((string[])ability_list.Items[3])[3]);
                 var siz = int.Parse(((string[])ability_list.Items[5])[3]);
                 var ints = int.Parse(((string[])ability_list.Items[6])[3]);
                 var edu = int.Parse(((string[])ability_list.Items[7])[3]);
 
 
 
-                var oldRule = new int[] { pow * 5, pow * 5, ints * 5, edu * 5, (con + siz) / 2, pow * 1, edu * 20, ints * 10, str + siz };
+                var oldRule = new int[] { pow * 5, pow * 5, ints * 5, edu * 5, (con + siz) / 2, pow * 1, edu * 20, ints * 10,dex * 2, str + siz };
 
                 for (int i = 0; i < point_list.Items.Count; i++)
                 {
@@ -510,6 +512,16 @@ namespace TRPG_PointCalculation
             else
             {
                 point_list.Columns[1].Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBoxResult.Yes != MessageBox.Show("終了するとすべてのデータは消えます。\n\n終了してよろしいですか？", "終了しますか？", MessageBoxButton.YesNo, MessageBoxImage.Information))
+            {
+                e.Cancel = true;
+                this.Close();
+                return;
             }
         }
     }

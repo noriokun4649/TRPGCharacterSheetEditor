@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TRPG_PointCalculation"
         mc:Ignorable="d"
-        Title="クトゥルフTRPGキャラシートエディタ" Height="520" Width="865" MinWidth="705" MinHeight="520">
+        Title="クトゥルフTRPGキャラシートエディタ" Height="520" Width="865" MinWidth="705" MinHeight="520" Closing="Window_Closing">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="ファイル">
