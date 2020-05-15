@@ -40,12 +40,14 @@ namespace TRPG_PointCalculation
             nokori.Text = "割り振り後の" + maru + "ポイント：" + this.marumarupointd;
             sumpoint = defpoint + addpoint;
             sum.Text = "技能値合計：" + sumpoint;
+            input.Focus();
         }
 
         public void EditData(string name, int point, string maru, int marumarupointd, MainWindow mainWindow, string addpoint)
         {
             SendData(name, point, maru, marumarupointd, mainWindow);
             input.Text = addpoint;
+            input.Focus();
         }
 
         private void Input_TextChanged(object sender, TextChangedEventArgs e)
