@@ -242,7 +242,7 @@ namespace TRPG_PointCalculation
                 if (tecpoint > 0)
                 {
                     var window = new Add();
-                    window.EditData(((string[])tec_list.SelectedItem)[0], int.Parse(((string[])tec_list.SelectedItem)[1]), "職業", hobypoint_nokori, this, ((string[])tec_list.SelectedItem)[2]);
+                    window.EditData(((string[])tec_list.SelectedItem)[0], int.Parse(((string[])tec_list.SelectedItem)[1]), "職業", tecpoint_nokori, this, ((string[])tec_list.SelectedItem)[2]);
                     window.Owner = this;
                     window.Show();
                     tec_list.Items.Remove(tec_list.SelectedItem);
