@@ -15,6 +15,8 @@ namespace TRPG_PointCalculation
         private int sumpoint;
         private int addpoint;
         private string maru;
+        private bool editmode;
+        private int index;
         private MainWindow mainWindow;
 
         public Add()
@@ -41,11 +43,17 @@ namespace TRPG_PointCalculation
             sumpoint = defpoint + addpoint;
             sum.Text = "技能値合計：" + sumpoint;
             input.Focus();
+            editmode = false;
         }
 
-        public void EditData(string name, int point, string maru, int marumarupointd, MainWindow mainWindow, string addpoint)
+        public void EditData(string name, int point, string maru, int marumarupointd, MainWindow mainWindow, string addpoint,int index)
         {
             SendData(name, point, maru, marumarupointd, mainWindow);
+            this.marumarupointd = marumarupointd + int.Parse(addpoint);
+            marumarupoint.Text = maru + "ポイント残り：" + this.marumarupointd;
+            nokori.Text = "割り振り後の" + maru + "ポイント：" + this.marumarupointd;
+            editmode = true;
+            this.index = index;
             input.Text = addpoint;
             input.Focus();
         }
@@ -75,15 +83,23 @@ namespace TRPG_PointCalculation
             {
                 if (nokoripoint >= 0)
                 {
-                    var check = mainWindow.Check(name);
-                    if (!(check[0] || check[1]))
+                    if (!editmode)
                     {
-                        mainWindow.AddData(maru == "職業" ? 1 : 2, name, defpoint, addpoint, sumpoint);
-                        this.Close();
+                        var check = mainWindow.Check(name);
+                        if (!(check[0] || check[1]))
+                        {
+                            mainWindow.AddData(maru == "職業" ? 1 : 2, name, defpoint, addpoint, sumpoint);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show((check[0] ? "職業" : "趣味") + "技能に既に追加されてる！");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show((check[0] ? "職業" : "趣味") + "技能に既に追加されてる！");
+                        mainWindow.AddData(maru == "職業" ? 1 : 2, name, defpoint, addpoint, sumpoint,index);
+                        this.Close();
                     }
                 }
                 else

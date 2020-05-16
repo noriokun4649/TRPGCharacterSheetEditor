@@ -153,6 +153,11 @@ namespace TRPG_PointCalculation
 
         public void AddData(int mode, string name, int defpoint, int addpoint, int sumpoint)
         {
+            AddData(mode, name, defpoint, addpoint, sumpoint,-1);
+        }
+
+        public void AddData(int mode, string name, int defpoint, int addpoint, int sumpoint,int index)
+        {
             ListView listView;
             switch (mode)
             {
@@ -163,7 +168,15 @@ namespace TRPG_PointCalculation
                     listView = hoby_list;
                     break;
             }
-            listView.Items.Add(new string[] { name, defpoint.ToString(), addpoint.ToString(), sumpoint.ToString() });
+            if (index >= 0)
+            {
+                listView.Items[index] = new string[] { name, defpoint.ToString(), addpoint.ToString(), sumpoint.ToString() };
+            }
+            else
+            {
+                listView.Items.Add(new string[] { name, defpoint.ToString(), addpoint.ToString(), sumpoint.ToString() });
+            }        
+
         }
 
         private void Tec_list_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -242,10 +255,9 @@ namespace TRPG_PointCalculation
                 if (tecpoint > 0)
                 {
                     var window = new Add();
-                    window.EditData(((string[])tec_list.SelectedItem)[0], int.Parse(((string[])tec_list.SelectedItem)[1]), "職業", tecpoint_nokori, this, ((string[])tec_list.SelectedItem)[2]);
+                    window.EditData(((string[])tec_list.SelectedItem)[0], int.Parse(((string[])tec_list.SelectedItem)[1]), "職業", tecpoint_nokori, this, ((string[])tec_list.SelectedItem)[2],tec_list.SelectedIndex);
                     window.Owner = this;
                     window.Show();
-                    tec_list.Items.Remove(tec_list.SelectedItem);
                 }
                 else
                 {
@@ -265,10 +277,9 @@ namespace TRPG_PointCalculation
                 if (hobypoint > 0)
                 {
                     var window = new Add();
-                    window.EditData(((string[])hoby_list.SelectedItem)[0], int.Parse(((string[])hoby_list.SelectedItem)[1]), "趣味", hobypoint_nokori, this, ((string[])hoby_list.SelectedItem)[2]);
+                    window.EditData(((string[])hoby_list.SelectedItem)[0], int.Parse(((string[])hoby_list.SelectedItem)[1]), "趣味", hobypoint_nokori, this, ((string[])hoby_list.SelectedItem)[2],hoby_list.SelectedIndex);
                     window.Owner = this;
                     window.Show();
-                    hoby_list.Items.Remove(hoby_list.SelectedItem);
                 }
                 else
                 {
